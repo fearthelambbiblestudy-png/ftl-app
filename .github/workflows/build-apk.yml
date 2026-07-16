@@ -21,6 +21,10 @@ jobs:
         working-directory: "ftl-app-project 2"
         run: npm ci
 
+      - name: Sync web assets into Android project
+        working-directory: "ftl-app-project 2"
+        run: npx cap copy android
+
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
