@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>FTL - Meeting Library</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="grid"></div>
+    <span class="ember"></span><span class="ember"></span><span class="ember"></span>
+    <span class="ember"></span><span class="ember"></span><span class="ember"></span>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-flame" viewBox="0 0 420 460"><defs><linearGradient id="bf" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#F59E0B"/><stop offset="1" stop-color="#FDE68A"/></linearGradient></defs><path fill="url(#bf)" d="M210 30 C 218 78 260 102 274 140 C 288 178 280 206 264 228 C 276 222 288 208 292 190 C 312 226 316 270 296 306 C 272 350 224 366 210 366 C 196 366 148 350 124 306 C 104 270 108 226 128 190 C 132 208 144 222 156 228 C 140 206 132 178 146 140 C 160 102 202 78 210 30 Z"/><path fill="#0b0f1a" d="M210 170 C 216 204 244 220 250 252 C 256 286 236 316 210 322 C 184 316 164 286 170 252 C 176 220 204 204 210 170 Z"/><rect x="88" y="380" width="244" height="30" rx="15" fill="url(#bf)" transform="rotate(8 210 395)"/><rect x="88" y="380" width="244" height="30" rx="15" fill="url(#bf)" transform="rotate(-8 210 395)"/></svg><span class="brand-mark">FTL</span>
+      <span class="brand-sub">Meeting Library</span>
+    </div>
+    <div class="search-wrap">
+      <input id="searchInput" type="text" placeholder="Search recordings and notes..." autocomplete="off" />
+    </div>
+    <button id="refreshBtn" class="icon-btn" title="Refresh">&#8635;</button>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="recordings">Recordings <span id="countRecordings" class="count">0</span></button>
+    <button class="tab" data-tab="notes">Meeting Notes <span id="countNotes" class="count">0</span></button>
+  </nav>
+
+  <main id="app">
+    <div id="statusPanel" class="status-panel" hidden></div>
+
+    <section id="recordingsPanel" class="panel active">
+      <div id="recordingsGrid" class="grid"></div>
+      <div id="recordingsEmpty" class="empty" hidden>No recordings found.</div>
+    </section>
+
+    <section id="notesPanel" class="panel">
+      <div id="notesGrid" class="grid"></div>
+      <div id="notesEmpty" class="empty" hidden>No meeting notes found.</div>
+    </section>
+  </main>
+
+  <div id="setupOverlay" class="overlay" hidden>
+    <div class="setup-card">
+      <h2>Set up FTL</h2>
+      <p>Connect FTL to your YouTube recordings playlist and your Drive notes folder.</p>
+      <label>Google API Key
+        <input id="apiKeyInput" type="text" placeholder="AIza... (enabled for YouTube Data API v3 + Drive API)" />
+      </label>
+      <label>YouTube Playlist ID
+        <input id="playlistIdInput" type="text" placeholder="e.g. PLxxxxxxxxxxxxxxxxxx" />
+      </label>
+      <label>Google Drive Notes Folder ID
+        <input id="folderIdInput" type="text" placeholder="e.g. 1AbCDeFGhijKLmnoPQRstuVWxyz" />
+      </label>
+      <button id="saveConfigBtn" class="primary-btn">Save &amp; Load Library</button>
+      <p class="hint">See the README included with this app for step-by-step instructions. Settings are saved only on this device.</p>
+    </div>
+  </div>
+
+  <div id="previewOverlay" class="overlay preview-overlay" hidden>
+    <div class="preview-card">
+      <div class="preview-header">
+        <span id="previewTitle" class="preview-title"></span>
+        <button id="previewClose" class="icon-btn">&#10005;</button>
+      </div>
+      <iframe id="previewFrame" class="preview-frame" sandbox="allow-popups allow-same-origin"></iframe>
+    </div>
+  </div>
+
+  <button id="settingsBtn" class="settings-fab" title="Settings">&#9881;</button>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">FTL</string>
+    <string name="title_activity_main">FTL</string>
+    <string name="package_name">co.cvglobal.ftl</string>
+    <string name="custom_url_scheme">co.cvglobal.ftl</string>
+</resources>
